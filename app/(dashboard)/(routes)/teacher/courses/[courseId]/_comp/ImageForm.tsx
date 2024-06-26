@@ -4,20 +4,10 @@ import axios from "axios"
 import { zodResolver } from "@hookform/resolvers/zod"
 import {useForm} from "react-hook-form"
 import {useRouter} from "next/navigation"
-
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormMessage
-} from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 import { ImageIcon, Pencil, PlusCircle } from "lucide-react"
 import { useState } from "react"
-import { cn } from "@/lib/utils"
-import { Textarea } from "@/components/ui/textarea"
 import { Course } from "@prisma/client"
 import Image from "next/image"
 import { FileUpload } from "@/components/FileUpload"

@@ -1,13 +1,14 @@
 import { IconBadge } from '@/components/icon-badge';
 import { db } from '@/lib/db'
 import { auth } from '@clerk/nextjs/server';
-import { LayoutDashboard } from 'lucide-react';
+import { CircleDollarSign, IndianRupee, LayoutDashboard, ListChecks } from 'lucide-react';
 import { redirect } from 'next/navigation';
 import React from 'react'
 import TitleForm from './_comp/TitleForm';
 import DescriptionForm from './_comp/DescriptionForm';
 import ImageForm from './_comp/ImageForm';
 import CategoryForm from './_comp/CategoryForm';
+import PriceForm from './_comp/price-form';
 
 const CourseId = async({params}:{params:{courseId:string}}) => {
   const {userId} = auth();
@@ -87,6 +88,29 @@ const CourseId = async({params}:{params:{courseId:string}}) => {
               })
             )}
             />
+          </div>
+          <div className='space-y-6'>
+              <div>
+                <div className='flex items-center gap-x-2'>
+                  <IconBadge icon={ListChecks}/>
+                  <h2 className='text-xl'>
+                    Course chapters
+                  </h2>
+                </div>
+                <div>
+                  TODO: Chapters
+                </div>
+              </div>
+              <div className='flex items-center gap-x-2'>
+                <IconBadge icon={IndianRupee}/>
+                <h2 className='text-xl'>
+                  Sell your course
+                </h2>
+              </div>
+              <PriceForm
+                initialData={course}
+                courseId={course.id}
+              />
           </div>
         </div>
 

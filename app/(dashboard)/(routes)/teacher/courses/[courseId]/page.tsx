@@ -10,6 +10,7 @@ import ImageForm from './_comp/ImageForm';
 import CategoryForm from './_comp/CategoryForm';
 import PriceForm from './_comp/price-form';
 import AttachmentForm from './_comp/AttachmentForm';
+import ChaptersForm from './_comp/ChaptersForm';
 
 const CourseId = async({params}:{params:{courseId:string}}) => {
   const {userId} = auth();
@@ -19,9 +20,15 @@ const CourseId = async({params}:{params:{courseId:string}}) => {
   
   const course = await db.course.findUnique({
     where:{
-      id:params.courseId
+      id:params.courseId,
+      userId
     },
     include:{
+      chapters:{
+        orderBy:{
+          position:"asc"
+        }
+      },
       attachments:{
         orderBy:{
           createdAt:"desc"
@@ -44,7 +51,8 @@ const CourseId = async({params}:{params:{courseId:string}}) => {
     course.description,
     course.imageUrl,
     course.price,
-    course.categoryId
+    course.categoryId,
+    course.chapters.some(chapter=>chapter.isPublished)
   ];
   const totalFields = requiredFields.length;
   const completedFields = requiredFields.filter(Boolean).length;
@@ -97,7 +105,9 @@ const CourseId = async({params}:{params:{courseId:string}}) => {
             )}
             />
           </div>
-          <div className='space-y-6'>
+          
+        </div>
+        <div className='space-y-6'>
               <div>
                 <div className='flex items-center gap-x-2'>
                   <IconBadge icon={ListChecks}/>
@@ -105,9 +115,10 @@ const CourseId = async({params}:{params:{courseId:string}}) => {
                     Course chapters
                   </h2>
                 </div>
-                <div>
-                  TODO: Chapters
-                </div>
+                <ChaptersForm
+                  initialData={course}
+                  courseId={course.id}
+                />
               </div>
               <div className='flex items-center gap-x-2'>
                 <IconBadge icon={IndianRupee}/>
@@ -119,20 +130,20 @@ const CourseId = async({params}:{params:{courseId:string}}) => {
                 initialData={course}
                 courseId={course.id}
               />
-          </div>
-          <div>
-              <div className='flex items-center gap-x-2'>
-                <IconBadge icon={File}/>
-                <h2 className='text-xl'>
-                  Resources & Attachments
-                </h2>
+              <div>
+                <div className='flex items-center gap-x-2'>
+                  <IconBadge icon={File}/>
+                  <h2 className='text-xl'>
+                    Resources & Attachments
+                  </h2>
+                </div>
+                <AttachmentForm
+                  initialData={course}
+                  courseId={course.id}
+                />
               </div>
-              <AttachmentForm
-                initialData={course}
-                courseId={course.id}
-              />
           </div>
-        </div>
+          
 
       </div>
     </div>

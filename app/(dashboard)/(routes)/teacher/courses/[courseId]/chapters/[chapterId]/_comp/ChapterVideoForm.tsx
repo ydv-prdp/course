@@ -75,7 +75,7 @@ const onSubmit = async(values:z.infer<typeof formSchema>)=>{
                 <Video className="h-10 w-10 text-slate-500"/>
             </div>
            ) : (
-            <div className="relative aspect-video mt-2">
+            <div className="relative aspect-video mt-2 z-0">
                <MuxPlayer
                     playbackId={initialData?.muxData?.playbackId || ""}
                />

@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, run the development server:
-
+hosstinger db -> mysql://u515009762_pradeeptwo:AB2332ab@auth-db984.hstgr.io/u515009762_coursetwo
 ```bash
 npm run dev
 # or

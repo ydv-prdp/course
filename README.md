@@ -1,5 +1,23 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+##Seeding the db
+
+1. npm install -D tsx
+2. {
+  "name": "my-project",
+  "version": "1.0.0",
+  "prisma": {
+    "seed": "tsx prisma/seed/seed.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.21",
+    "tsx": "^4.7.2",
+    "typescript": "^4.1.3"
+  }
+
+3.   npx prisma db seed
+
+
 ## Getting Started
 
 First, run the development server:

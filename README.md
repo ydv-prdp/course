@@ -3,6 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ##Seeding the db
 
 1. npm install -D tsx
+2. Update the package.json
 ```bash
  {
   "name": "my-project",

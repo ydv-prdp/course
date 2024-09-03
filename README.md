@@ -3,7 +3,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ##Seeding the db
 
 1. npm install -D tsx
-2. {
+```bash
+ {
   "name": "my-project",
   "version": "1.0.0",
   "prisma": {
@@ -14,7 +15,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     "tsx": "^4.7.2",
     "typescript": "^4.1.3"
   }
-
+```
 3.   npx prisma db seed
 
 
